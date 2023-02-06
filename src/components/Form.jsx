@@ -1,7 +1,53 @@
 import React, { useState } from "react";
 import Modal from "../components/Modal";
+import { v4 as uuid } from 'uuid';
+
 function Form() {
+  const unique_id = uuid();
+  const small_id = unique_id.slice(0,8)
   const [isOpen, setIsOpen] = useState(false);
+  const [data, setData] = useState({
+    author_name: "",
+    author_org: "",
+    identity: "",
+    author_email: "",
+    article_title: "",
+    presenter_name: "",
+    topic: "",
+    submit_type: "",
+    abstract: "",
+    uid:"",
+    timestamp:""
+});
+const { uid,timestamp, ...otherProps } = data
+const canSubmit = [...Object.values(otherProps)].every(Boolean)
+
+  const handleSubmit = () => {
+    const time = Date.now()
+    const today = new Date(time);
+    setData(prevData => ({
+        ...prevData,
+        uid: small_id,
+        timestamp: today.toISOString()
+    }));
+    console.log(canSubmit, "a");
+    console.log(JSON.stringify(data));
+    
+}
+  const handleChange = e => {
+    const type = e.target.type
+
+    const name = e.target.name
+
+    const value = type === "checkbox"
+        ? e.target.checked
+        : e.target.value
+
+    setData(prevData => ({
+        ...prevData,
+        [name]: value
+    }))
+}
   return (
     <form
       className="pt-5"
@@ -25,6 +71,8 @@ function Form() {
               name="author_name"
               placeholder="請輸入一名作者代表即可"
               required=""
+              value={data.author_name}
+              onChange={handleChange}
             />
             <div className="help-block with-errors" />
           </div>
@@ -42,6 +90,8 @@ function Form() {
               id="author_org_input"
               name="author_org"
               required=""
+              value={data.author_org}
+              onChange={handleChange}
             />
           </div>
         </div>
@@ -57,6 +107,8 @@ function Form() {
               id="select_identity"
               name="identity"
               required=""
+              value={data.identity}
+              onChange={handleChange}
             >
               <option value="">--請選擇--</option>
               <option value="大專教師 College Faculty">
@@ -84,6 +136,8 @@ function Form() {
               id="author_email_input"
               name="author_email"
               required=""
+              value={data.author_email}
+              onChange={handleChange}
             />
           </div>
         </div>
@@ -101,6 +155,8 @@ function Form() {
               name="article_title"
               placeholder="請輸入稿件中文或英文標題 "
               required=""
+              value={data.article_title}
+              onChange={handleChange}
             />
           </div>
         </div>
@@ -118,6 +174,8 @@ function Form() {
               name="presenter_name"
               placeholder="多位報告者請以逗號隔開"
               required=""
+              value={data.presenter_name}
+              onChange={handleChange}
             />
             <div className="help-block with-errors" />
           </div>
@@ -139,6 +197,7 @@ function Form() {
                     defaultValue="臨床心理學組"
                     className="custom-control-input"
                     required=""
+                    onChange={handleChange}
                   />
                   <label className="custom-control-label" htmlFor="topic_1">
                     臨床心理學組
@@ -151,6 +210,7 @@ function Form() {
                     name="topic"
                     defaultValue="工商心理學組"
                     className="custom-control-input"
+                    onChange={handleChange}
                   />
                   <label className="custom-control-label" htmlFor="topic_2">
                     工商心理學組
@@ -163,6 +223,7 @@ function Form() {
                     name="topic"
                     defaultValue="教育心理學組"
                     className="custom-control-input"
+                    onChange={handleChange}
                   />
                   <label className="custom-control-label" htmlFor="topic_3">
                     教育心理學組
@@ -175,6 +236,7 @@ function Form() {
                     name="topic"
                     defaultValue="實驗認知心理學組"
                     className="custom-control-input"
+                    onChange={handleChange}
                   />
                   <label className="custom-control-label" htmlFor="topic_4">
                     實驗認知心理學組
@@ -187,6 +249,7 @@ function Form() {
                     name="topic"
                     defaultValue="心理計量學組 "
                     className="custom-control-input"
+                    onChange={handleChange}
                   />
                   <label className="custom-control-label" htmlFor="topic_5">
                     心理計量學組
@@ -201,6 +264,7 @@ function Form() {
                     name="topic"
                     defaultValue="諮商心理學組"
                     className="custom-control-input"
+                    onChange={handleChange}
                   />
                   <label className="custom-control-label" htmlFor="topic_6">
                     諮商心理學組
@@ -213,6 +277,7 @@ function Form() {
                     name="topic"
                     defaultValue="社會與人格心理學組"
                     className="custom-control-input"
+                    onChange={handleChange}
                   />
                   <label className="custom-control-label" htmlFor="topic_7">
                     社會與人格心理學組
@@ -225,6 +290,7 @@ function Form() {
                     name="topic"
                     defaultValue="發展心理學組"
                     className="custom-control-input"
+                    onChange={handleChange}
                   />
                   <label className="custom-control-label" htmlFor="topic_8">
                     發展心理學組
@@ -237,6 +303,7 @@ function Form() {
                     name="topic"
                     defaultValue="神經與生理心理學組"
                     className="custom-control-input"
+                    onChange={handleChange}
                   />
                   <label className="custom-control-label" htmlFor="topic_9">
                     神經與生理心理學組
@@ -249,6 +316,7 @@ function Form() {
                     name="topic"
                     defaultValue="COVID-19"
                     className="custom-control-input"
+                    onChange={handleChange}
                   />
                   <label className="custom-control-label" htmlFor="topic_10">
                     COVID-19
@@ -261,6 +329,7 @@ function Form() {
                     name="topic"
                     defaultValue=""
                     className="custom-control-input"
+                    onChange={handleChange}
                   />
                   <label
                     className="custom-control-label"
@@ -272,6 +341,7 @@ function Form() {
                       name="topic"
                       className="form-control form-control-sm"
                       placeholder="其他專業領域"
+                      onChange={handleChange}
                     />
                   </label>
                 </div>
@@ -296,6 +366,7 @@ function Form() {
                     defaultValue="專題論文（口頭發表/Oral）"
                     className="custom-control-input"
                     required=""
+                    onChange={handleChange}
                   />
                   <label className="custom-control-label" htmlFor="type_1">
                     專題論文（口頭發表/Oral）
@@ -308,6 +379,7 @@ function Form() {
                     name="submit_type"
                     defaultValue="獨立論文（壁報發表/Poster）"
                     className="custom-control-input"
+                    onChange={handleChange}
                   />
                   <label className="custom-control-label" htmlFor="type_2">
                     獨立論文（壁報發表/Poster）
@@ -320,6 +392,7 @@ function Form() {
                     name="submit_type"
                     defaultValue="專題演講（Symposium，由籌畫人代表投稿）"
                     className="custom-control-input"
+                    onChange={handleChange}
                   />
                   <label className="custom-control-label" htmlFor="type_3">
                     專題演講（Symposium，由籌畫人代表投稿）
@@ -344,6 +417,7 @@ function Form() {
               name="abstract"
               placeholder="500 words only"
               required=""
+              onChange={handleChange}
             />
           </div>
           <div className="help-block with-errors" />
@@ -351,18 +425,21 @@ function Form() {
 
         <div className="row justify-content-center">
           <input type="hidden" id="timestamp_input" name="timestamp" />
-          <input type="hidden" id="uid_input" name="uid" />
+          <input type="hidden" id="uid_input" name="uid" defaultValue={small_id} onChange={handleChange} />
           <input type="hidden" id="special_topic" name="specialTopic" />
+          
           <div className="col-3" />
           <div className="col-6">
-            <div
+            <button
+             type="button"
               className="btn btn-primary col-6"
               id="go_to_confirm"
               onClick={() => setIsOpen(true)}
+              disabled={!canSubmit}
             >
               下一步 Next
-            </div>
-            {isOpen && <Modal setIsOpen={setIsOpen} />}
+            </button>
+            {isOpen && <Modal setIsOpen={setIsOpen} handleSubmit={handleSubmit} />}
           </div>
         </div>
       </div>
