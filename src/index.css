@@ -1,15 +1,16 @@
 html {
-  font-family: 'Microsoft JhengHei', Arial, Helvetica, sans-serif;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
-  background: #f7f7f7;
+  background-color: #fff;
   box-sizing: border-box;
 }
 
-.banner{
+.banner {
   width: 100%;
   margin-top: 65px;
 }
@@ -17,7 +18,7 @@ nav {
   color: #14213d;
   padding: 20px 50px;
 }
-nav a{
+nav a {
   text-decoration: none;
   font-size: large;
   font-weight: 700;
@@ -30,44 +31,66 @@ nav a:visited {
   color: rgb(34, 32, 32);
 }
 nav a:hover {
-  color:rgb(102, 96, 96);
+  color: rgb(102, 96, 96);
 }
-.fullpage{
+.fullpage {
   height: 100vh;
 }
-#contact{
+#contact {
   background-color: #14213d;
 }
-#submit{
+#submit {
   background-color: #f9f9f9;
 }
-.logo{
+#reminder {
+  background-color: #14213d;
+  color: #f9f9f9;
+  font-size: 20px;
+}
+.logo {
   height: 40px;
   width: 40px;
 }
-.h1 {
+
+header a {
   font-size: 26px;
   font-weight: 700;
-  color: #f9f9f9;
+  text-decoration: none;
 }
-.welcome{
+header a:link {
+  color: #621d1d;
+}
+header a:visited {
+  color: #621d1d !important;
+}
+header a:hover {
+  color: #863535;
+}
+
+.welcome {
   font-size: 26px;
   font-weight: 700;
   color: #621d1d;
 }
 
-.h2{
+.h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #f9f9f9;
+}
+
+.h2 {
   font-size: 20px;
   font-weight: 500;
   color: #f9f9f9;
 }
-.h3{
+.h3 {
   font-size: 15px;
   font-weight: 400;
   color: #f9f9f9;
 }
 
-.emphz{
+.emphz {
   font-weight: 500;
 }
 
@@ -76,147 +99,72 @@ nav a:hover {
   margin-bottom: 16px;
   font-weight: 300;
 }
-
-/* custom btn settings */
-.btn-custom {
-  background-color: #c36b5a;
-  color: white;
-}
-
-.btn-custom:hover, .btn-custom:visited {
-  background-color: #7b3117;
-  cursor: pointer;
-  color: white;
-}
-
-.btn-custom2{
-  background-color: grey;
-  font-size: 14px;
-  color: white;
-  /* min-width: 110px; */
-}
-
-.btn-custom2:hover, .btn-custom2:visited{
-  background-color: #c36b5a;
-  cursor: pointer;
-  color: white;
-}
-
-.btn-hidden{
+.btn-hidden {
   display: none;
 }
-
-
 
 .text-right {
   text-align: right;
 }
 
-.v-center{
-  padding-top: 6px;
-}
-
-.lighter{
-  color: #6c757d;
-}
-
-.min-w{
-  min-width: 160px;
-}
-
-.more-lh{
+.more-lh {
   line-height: 60px;
 }
 
-.more-mg{
+.more-mg {
   margin-top: 10px;
 }
 
-.justify-content-center{
-  justify-content: center;
-}
-.text-align-center{
+.text-align-center {
   text-align: center;
 }
-.mt-5{
-  margin-top: 5rem;
-}
-.mr-3{
-  margin-right: 3rem;
-}
-.pt-6{
-  padding-top: 6rem;
-}
-.custom-header{
-  font-weight: bold;
-  color: #242729
-  ;
-}
 
-.download-adj{
-  /* margin-top: 60px; */
-  margin-left: 30px;
-}
-
-.required-col::before{
-  content:"* ";
+.required-col::before {
+  content: "* ";
   color: red;
 }
 
-.required-input:focus{
+.required-input:focus {
   border-color: #7b3117;
 }
 
 footer {
-  position: relative;
-  /* 設定footer的高度 */
   height: 120px;
-  /* 設定footer絕對位置在底部 */
-  bottom: 0;
-  /* 展開footer寬度 */
   width: 100%;
-  /* Setting styles */
-  margin-top:50px;
+  margin-top: 50px;
   background-color: #242729;
   color: white;
 }
 
-.ft-content{
+.ft-content {
   position: absolute;
   margin-top: 20px;
   margin-left: 100px;
   color: white;
 }
 
-#ft-complete_page{
+#ft-complete_page {
   position: fixed;
   bottom: 0;
 }
 
 a:link {
-color: #f9f9f9;
+  color: #f9f9f9;
 }
 a:visited {
-color: #f9f9f9;
+  color: #f9f9f9;
 }
 a:hover {
-color:white;
+  color: white;
 }
 
-.en_col{
+.en_col {
   font-size: 8px;
   color: #242729;
   font-weight: 300 !important;
 }
 
-.col_mg_adj{
-  margin-top: 26px;
-}
-
-.custom_input_wd{
-  width: 280px
-}
-
+/* Timeline component style */
 .line {
   width: 120px;
   height: 2px;
@@ -235,4 +183,7 @@ color:white;
 .timeline-text {
   position: absolute;
   top: 25px;
+}
+.abstract-input {
+  width: 500px !important;
 }
