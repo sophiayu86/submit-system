@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import FormContent from "../components/FormContent";
 import { v4 as uuid } from "uuid";
-import Submitted from "./Submitted";
-import Footer from "./Footer";
+import Complete from "../components/Complete";
+import Footer from "../components/Footer";
+import Reminder from "../components/Reminder";
+import Header from '../components/Header';
 
-export default function Form({ submitted, setSubmitted }) {
-  const unique_id = uuid();
-  const small_id = unique_id.slice(0, 8);
+export default function Form() {
+  const [submitted, setSubmitted] = useState(false);
   const [data, setData] = useState({
     author_name: "",
     author_org: "",
@@ -22,6 +23,8 @@ export default function Form({ submitted, setSubmitted }) {
   });
   const { uid, timestamp, ...requiredField } = data;
   const canSubmit = [...Object.values(requiredField)].every(Boolean);
+  const unique_id = uuid();
+  const small_id = unique_id.slice(0, 8);
 
   const handleSubmit = () => {
     const time = Date.now();
@@ -51,8 +54,10 @@ export default function Form({ submitted, setSubmitted }) {
 
   return (
     <>
+    <Header text="2020 臺灣心理學年會徵稿：新冠肺炎與心理健康"/>
       {!submitted && (
-        <><FormContent
+        <><Reminder />
+        <FormContent
           data={data}
           handleChange={handleChange}
           canSubmit={canSubmit}
@@ -61,7 +66,7 @@ export default function Form({ submitted, setSubmitted }) {
         /><Footer /></>
       )}
 
-      {submitted && <Submitted data={data} />}
+      {submitted && <Complete data={data} />}
       
     </>
   );

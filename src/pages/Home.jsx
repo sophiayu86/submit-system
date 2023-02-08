@@ -43,7 +43,7 @@ export default function Home() {
         <div className="welcome pt-5 text-align-center">
           Welcome to the 60th TPA Conference!
         </div>
-        <a className="text-center btn btn-dark btn-lg mt-5" href="/submit">
+        <a className="text-center btn btn-dark btn-lg mt-5" href="/form">
           投稿去
         </a>
         <div className="d-flex justify-content-center mt-5">

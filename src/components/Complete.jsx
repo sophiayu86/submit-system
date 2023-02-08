@@ -13,7 +13,7 @@ function Submitted({ data }) {
           <p>我們將儘速為您審稿，有任何問題，歡迎與我們聯絡。</p>
         </div>
         <div className="d-flex">
-          <a className="text-center btn btn-dark btn mt-5 me-5" href="/submit">
+          <a className="text-center btn btn-dark btn mt-5 me-5" href="/form">
             再投一篇 Submit Another
           </a>
           <a className="text-center btn btn-dark mt-5" href="/">
