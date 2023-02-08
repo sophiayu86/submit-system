@@ -139,6 +139,7 @@ footer {
 #ft-complete_page {
   position: fixed;
   bottom: 0;
+  width: 100%;
 }
 
 a:link {

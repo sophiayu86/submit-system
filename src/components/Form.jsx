@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import FormContent from "../components/FormContent";
 import { v4 as uuid } from "uuid";
 import Submitted from "./Submitted";
+import Footer from "./Footer";
 
 export default function Form({ submitted, setSubmitted }) {
   const unique_id = uuid();
@@ -30,8 +31,11 @@ export default function Form({ submitted, setSubmitted }) {
       uid: small_id,
       timestamp: today.toISOString(),
     }));
-    console.log("a");
-    console.log(JSON.stringify(data));
+    console.log(JSON.stringify({
+      ...data,
+      uid: small_id,
+      timestamp: today.toISOString(),
+    }));
   };
 
   const handleChange = (e) => {
@@ -48,16 +52,17 @@ export default function Form({ submitted, setSubmitted }) {
   return (
     <>
       {!submitted && (
-        <FormContent
+        <><FormContent
           data={data}
           handleChange={handleChange}
           canSubmit={canSubmit}
           handleSubmit={handleSubmit}
           setSubmitted={setSubmitted}
-        />
+        /><Footer /></>
       )}
 
       {submitted && <Submitted data={data} />}
+      
     </>
   );
 }

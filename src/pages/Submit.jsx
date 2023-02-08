@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Footer from '../components/Footer';
 import Form from '../components/Form';
 import Header from '../components/Header';
 import Reminder from '../components/Reminder';
@@ -14,10 +13,8 @@ export default function Submit() {
 
       <section>
       <Form submitted={submitted} setSubmitted={setSubmitted} />
-      {/* <FormTest submitted={submitted} setSubmitted={setSubmitted} /> */}
       </section>
 
-      <Footer />
     </>
   );
 }
