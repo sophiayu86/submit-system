@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Modal.module.css";
 import { RiCloseLine } from "react-icons/ri";
 
-const Modal = ({ setIsOpen, handleSubmit }) => {
+const Modal = ({ handleSubmit, setIsOpen, setSubmitted }) => {
   return (
     <>
       <div className={styles.darkBG} onClick={() => setIsOpen(false)} />
@@ -19,16 +19,23 @@ const Modal = ({ setIsOpen, handleSubmit }) => {
           </div>
           <div className={styles.modalActions}>
             <div className={styles.actionsContainer}>
-            <button
+              <button
                 className={styles.cancelBtn}
                 onClick={() => setIsOpen(false)}
               >
                 Not Yet
               </button>
-              <button type="submit" className={styles.submitBtn} onClick={() => {setIsOpen(false);handleSubmit();}}>
+              <button
+                type="submit"
+                className={styles.submitBtn}
+                onClick={async () => {
+                  setIsOpen(false);
+                  await handleSubmit();
+                  setSubmitted(true);
+                }}
+              >
                 Submit
               </button>
-              
             </div>
           </div>
         </div>

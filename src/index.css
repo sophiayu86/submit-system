@@ -99,13 +99,6 @@ header a:hover {
   margin-bottom: 16px;
   font-weight: 300;
 }
-.btn-hidden {
-  display: none;
-}
-
-.text-right {
-  text-align: right;
-}
 
 .more-lh {
   line-height: 60px;
@@ -162,6 +155,7 @@ a:hover {
   font-size: 8px;
   color: #242729;
   font-weight: 300 !important;
+  padding-left: 10px;
 }
 
 /* Timeline component style */
@@ -184,6 +178,4 @@ a:hover {
   position: absolute;
   top: 25px;
 }
-.abstract-input {
-  width: 500px !important;
-}
+
