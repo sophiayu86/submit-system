@@ -1,12 +1,13 @@
-# Conference paper submission website
+# Conference Paper Submission Website
 
 This is a conference paper submission website that helps manage annually calls for papers. 
 
 # Features
 
 - Conference landing page.
-- A form that can submit paper abstract and author details and generate unique id and timestamp automatically upon submission.
+- A form that can submit paper abstracts and author details and generate unique id and timestamp automatically upon submission.
 - A submission complete page that shows the unique id and success in submission messages.
+- You can see the entered data in console upon submission.
 
 ## Getting Started with Create React App
 
