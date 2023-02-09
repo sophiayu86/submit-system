@@ -6,8 +6,10 @@ This is a conference paper submission website that helps manage annually calls f
 
 - Conference landing page.
 - A form that can submit paper abstracts and author details and generate unique id and timestamp automatically upon submission.
-- A submission complete page that shows the unique id and success in submission messages.
-- You can see the entered data in console upon submission.
+- A double-check modal before form submission.
+- Form submit button is only enabled after filling out all required fields.
+- A submission complete page that shows the unique id, success in submission messages, and buttons that redirect to another submission or conference landing page.
+- You can see the entered data in the console upon submission.
 
 ## Getting Started with Create React App
 
