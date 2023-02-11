@@ -4,10 +4,11 @@ import { v4 as uuid } from "uuid";
 import Complete from "../components/Complete";
 import Footer from "../components/Footer";
 import Reminder from "../components/Reminder";
-import Header from '../components/Header';
+import Header from "../components/Header";
 
 export default function Form() {
   const [submitted, setSubmitted] = useState(false);
+  const [valid, setValid] = useState(true);
   const [data, setData] = useState({
     author_name: "",
     author_org: "",
@@ -22,7 +23,7 @@ export default function Form() {
     timestamp: "",
   });
   const { uid, timestamp, ...requiredField } = data;
-  const canSubmit = [...Object.values(requiredField)].every(Boolean);
+  const canSubmit = [...Object.values(requiredField)].every(Boolean)&& valid;
   const unique_id = uuid();
   const small_id = unique_id.slice(0, 8);
 
@@ -34,17 +35,28 @@ export default function Form() {
       uid: small_id,
       timestamp: today.toISOString(),
     }));
-    console.log(JSON.stringify({
-      ...data,
-      uid: small_id,
-      timestamp: today.toISOString(),
-    }));
+    console.log(
+      JSON.stringify({
+        ...data,
+        uid: small_id,
+        timestamp: today.toISOString(),
+      })
+    );
   };
 
   const handleChange = (e) => {
     const type = e.target.type;
     const name = e.target.name;
     const value = type === "checkbox" ? e.target.checked : e.target.value;
+    if (name === "author_email") {
+      const emailRule =
+        /^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+        if (emailRule.test(e.target.value)) {
+        setValid(true);
+      } else {
+        setValid(false);
+      }
+    }
 
     setData((prevData) => ({
       ...prevData,
@@ -54,20 +66,23 @@ export default function Form() {
 
   return (
     <>
-    <Header text="2020 臺灣心理學年會徵稿：新冠肺炎與心理健康"/>
+      <Header text="2020 臺灣心理學年會徵稿：新冠肺炎與心理健康" />
       {!submitted && (
-        <><Reminder />
-        <FormContent
-          data={data}
-          handleChange={handleChange}
-          canSubmit={canSubmit}
-          handleSubmit={handleSubmit}
-          setSubmitted={setSubmitted}
-        /><Footer /></>
+        <>
+          <Reminder />
+          <FormContent
+            data={data}
+            handleChange={handleChange}
+            canSubmit={canSubmit}
+            handleSubmit={handleSubmit}
+            setSubmitted={setSubmitted}
+            valid={valid}
+          />
+          <Footer />
+        </>
       )}
 
       {submitted && <Complete data={data} />}
-      
     </>
   );
 }

@@ -7,9 +7,9 @@ export default function FormContent({
   canSubmit,
   handleSubmit,
   setSubmitted,
+  valid
 }) {
   const [isOpen, setIsOpen] = useState(false);
-
   return (
     <form
       className="pt-5"
@@ -21,7 +21,8 @@ export default function FormContent({
         <h2 className="text-align-center mb-5">投稿表單 Submittion Form</h2>
         
         <Inputs data={data} handleChange={handleChange} />
-        
+        {/* error message */}
+        {!valid && <div className="error-message"> Email is not valid, please enter a valid email. </div>}
         <button
           type="button"
           className="btn btn-primary d-flex mx-auto"
