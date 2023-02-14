@@ -2,6 +2,8 @@
 
 This is a conference paper submission website that helps manage annually calls for papers. 
 
+[Picture Demo Link](https://www.dropbox.com/s/2ft9c4u2ptzj8mx/Sophia_Demo.pdf?dl=0)
+
 # Features
 
 - Conference landing page.
